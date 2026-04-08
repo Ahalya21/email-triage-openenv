@@ -1,3 +1,18 @@
+---
+title: Email Triage OpenEnv
+emoji: 📬
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+tags:
+  - openenv
+---
+
+
+
+<<<<<<< HEAD
 # 📬 Email Triage OpenEnv
 
 > A real-world email triage environment for evaluating AI agents — built for the Meta OpenEnv Hackathon.
@@ -270,3 +285,16 @@ This environment is tagged with `openenv` and deployed as a Hugging Face Space w
 ## License
 
 MIT
+=======
+---
+title: Email Triage Openenv
+emoji: 🌍
+colorFrom: gray
+colorTo: pink
+sdk: docker
+pinned: false
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+>>>>>>> a23806b1722024deb7c158d2ac394ab2dcdfdd49
