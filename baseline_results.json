@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "task_id": "task_easy",
+      "final_score": 1.0,
+      "step_rewards": [
+        0.5,
+        0.5,
+        1.0
+      ],
+      "breakdown": {
+        "labeled_urgent": 0.5,
+        "escalated": 0.5,
+        "delete_penalty": 0.0,
+        "extra_action_penalty": -0.0
+      },
+      "method": "rule_based"
+    },
+    {
+      "task_id": "task_medium",
+      "final_score": 0.9500000000000001,
+      "step_rewards": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.05,
+        0.1,
+        0.1,
+        0.1,
+        0.9500000000000001
+      ],
+      "breakdown": {
+        "m001": 0.1,
+        "m002": 0.1,
+        "m003": 0.1,
+        "m004": 0.1,
+        "m005": 0.1,
+        "m006": 0.1,
+        "m007": 0.05,
+        "m008": 0.1,
+        "m009": 0.1,
+        "m010": 0.1,
+        "redundant_penalty": -0.0
+      },
+      "method": "rule_based"
+    },
+    {
+      "task_id": "task_hard",
+      "final_score": 1.0,
+      "step_rewards": [
+        0.088,
+        0.1,
+        0.15,
+        0.1,
+        0.12,
+        0.08,
+        0.12,
+        0.1,
+        0.08,
+        0.07,
+        1.0
+      ],
+      "breakdown": {
+        "h001": 0.088,
+        "h002": 0.1,
+        "h003": 0.15,
+        "h004": 0.1,
+        "h005": 0.12,
+        "h006": 0.08,
+        "h007": 0.12,
+        "h008": 0.1,
+        "h009": 0.08,
+        "h010": 0.07,
+        "penalties": 0
+      },
+      "method": "rule_based"
+    }
+  ],
+  "average": 0.9833333333333334
+}

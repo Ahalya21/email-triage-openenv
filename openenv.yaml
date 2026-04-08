@@ -1,0 +1,80 @@
+name: email-triage-env
+version: "1.0.0"
+description: >
+  A real-world email triage environment where an agent must read, prioritize,
+  categorize, and respond to a simulated inbox. Tasks span easy to hard,
+  covering single-email classification, multi-email inbox management, and
+  complex escalation workflows under ambiguous conditions.
+author: openenv-hackathon
+tags:
+  - openenv
+  - email
+  - triage
+  - nlp
+  - real-world
+
+observation_space:
+  type: dict
+  fields:
+    inbox:
+      type: list
+      description: List of email objects currently in the inbox
+    current_email:
+      type: dict
+      description: The email currently being acted upon (id, subject, body, sender, timestamp, labels)
+    task_description:
+      type: string
+      description: Natural language description of the task objective
+    step_count:
+      type: integer
+      description: Number of steps taken so far
+    context:
+      type: dict
+      description: Additional task-specific context (policies, history, etc.)
+
+action_space:
+  type: dict
+  fields:
+    action_type:
+      type: string
+      enum: [label, reply, escalate, archive, delete, move, summarize, flag, done]
+      description: The type of action to perform
+    email_id:
+      type: string
+      description: Target email ID (required for most actions)
+    label:
+      type: string
+      description: Label to apply (for label action)
+    reply_body:
+      type: string
+      description: Reply text (for reply action)
+    summary:
+      type: string
+      description: Summary text (for summarize action)
+    destination:
+      type: string
+      description: Folder destination (for move action)
+    reason:
+      type: string
+      description: Reason for escalation or flagging
+
+tasks:
+  - id: task_easy
+    name: Single Email Classification
+    difficulty: easy
+    description: Classify a single email into the correct priority category.
+  - id: task_medium
+    name: Inbox Triage
+    difficulty: medium
+    description: Process a 10-email inbox by labeling, archiving, replying, and escalating appropriately.
+  - id: task_hard
+    name: Escalation Workflow Under Ambiguity
+    difficulty: hard
+    description: Manage a complex inbox with conflicting signals, VIP senders, policy constraints, and time-sensitive escalations.
+
+reward:
+  type: continuous
+  range: [0.0, 1.0]
+  description: Incremental rewards for correct actions; penalties for incorrect labels, missed escalations, or destructive actions.
+
+entry_point: env.email_triage_env:EmailTriageEnv
