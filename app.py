@@ -64,15 +64,25 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/reset")
-def reset(req: ResetRequest):
-    if req.task_id not in TASK_IDS:
-        raise HTTPException(status_code=400, detail=f"Unknown task_id. Choose from: {TASK_IDS}")
-    env = EmailTriageEnv(task_id=req.task_id)
-    obs = env.reset()
-    _sessions[req.session_id] = env
-    return {"observation": obs.model_dump(), "session_id": req.session_id}
+# @app.post("/reset")
+# def reset(req: ResetRequest):
+#     if req.task_id not in TASK_IDS:
+#         raise HTTPException(status_code=400, detail=f"Unknown task_id. Choose from: {TASK_IDS}")
+#     env = EmailTriageEnv(task_id=req.task_id)
+#     obs = env.reset()
+#     _sessions[req.session_id] = env
+#     return {"observation": obs.model_dump(), "session_id": req.session_id}
+from pydantic import BaseModel
+from typing import Optional
 
+class ResetRequest(BaseModel):
+    task: Optional[str] = "task_easy"
+
+@app.post("/reset")
+async def reset(request: ResetRequest = None):
+    if request is None:
+        request = ResetRequest()
+    task = request.task or "task_easy"
 
 @app.post("/step")
 def step(req: StepRequest):
